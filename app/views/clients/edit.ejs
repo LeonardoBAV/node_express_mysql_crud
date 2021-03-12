@@ -1,0 +1,42 @@
+<%- include('../layout/header'); -%>
+
+
+<% if(errors.length > 0) { %>
+<div class="alert alert-danger" role="alert">
+    <ul>
+        <% for(var i = 0; i < errors.length; i++) { %>
+        <li><%= errors[i].msg %></li>
+        <% } %>
+    </ul>
+</div>
+<% } %>
+
+<div class="card">
+    <div class="card-header">
+        Cliente #<%=client_form.id%>
+    </div>
+    <div class="card-body">
+        <form action="/clients/update/<%=client_form.id%>" method="POST">
+            <input name="id" type="hidden" value="<%=client_form.id%>">
+            <div class="form-group">
+                <label>Nome</label>
+                <input name="name" class="form-control" type="text" value="<%=client_form.name%>">
+            </div>
+            <div class="form-group">
+                <label>Cpf</label>
+                <input name="cpf" class="form-control" type="text" value="<%=client_form.cpf%>">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input name="email" class="form-control" type="email" value="<%=client_form.email%>">
+            </div>
+            <div class="form-group">
+                <label>Age</label>
+                <input name="age" class="form-control" type="number" value="<%=client_form.age%>">
+            </div>
+            <input class="btn btn-primary" type="submit" value="Salvar" />
+        </form>
+    </div>
+</div>
+
+<%- include('../layout/footer'); -%>
